@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food and Cooking - English Worksheet (Bilingual Edition)</title>
+  <style>
+    /* CSS Reset & General Setup */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+      background-color: #f1f5f9;
+      color: #0f172a;
+      line-height: 1.4;
+    }
+
+    /* Print Controls Header (Hidden on Print) */
+    .no-print-bar {
+      position: sticky;
+      top: 0;
+      background-color: #0f172a;
+      color: #ffffff;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .no-print-bar h1 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .btn-print {
+      background-color: #059669;
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-print:hover {
+      background-color: #047857;
+    }
+
+    /* A4 Page Dimensions & Setup */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      height: 297mm;
+      margin: 20px auto;
+      background: white;
+      padding: 16mm 16mm 12mm 16mm;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    /* Printable Styling Rules */
+    @media print {
+      body {
+        background: none;
+      }
+      .no-print-bar {
+        display: none !important;
+      }
+      .page {
+        margin: 0;
+        box-shadow: none;
+        width: 210mm;
+        height: 297mm;
+        padding: 15mm 15mm 10mm 15mm;
+        page-break-after: always;
+        break-after: page;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+    }
+
+    /* Header Elements */
+    .sheet-header {
+      border-bottom: 3px double #2563eb;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 6px;
+    }
+
+    .sheet-title {
+      font-size: 1.5rem;
+      color: #1e3a8a;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .student-info-box {
+      display: flex;
+      gap: 12px;
+      border: 1.5px solid #3b82f6;
+      padding: 5px 10px;
+      border-radius: 6px;
+      background-color: #eff6ff;
+    }
+
+    .info-field {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 0.82rem;
+    }
+
+    .info-field span.label {
+      margin-right: 4px;
+      color: #1e40af;
+    }
+
+    .info-field .line {
+      display: inline-block;
+      border-bottom: 1px solid #1e40af;
+      min-width: 50px;
+      text-align: center;
+    }
+
+    .info-field .line.name {
+      min-width: 100px;
+    }
+
+    /* Section Component Styles */
+    .section-box {
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 10px;
+      background-color: #ffffff;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 4px;
+    }
+
+    .badge {
+      background-color: #2563eb;
+      color: white;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 12px;
+    }
+
+    /* Grammar Tables */
+    .grammar-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 4px;
+      font-size: 0.85rem;
+    }
+
+    .grammar-table th, .grammar-table td {
+      border: 1px solid #cbd5e1;
+      padding: 6px 8px;
+      vertical-align: middle;
+    }
+
+    .grammar-table th {
+      background-color: #eff6ff;
+      color: #1e40af;
+      text-align: left;
+      width: 28%;
+    }
+
+    /* Speech & Dialogue Box */
+    .dialogue-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background-color: #faf5ff;
+      border: 2px dashed #c084fc;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 6px;
+    }
+
+    .speech-bubble {
+      position: relative;
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 10px 14px;
+      border: 2px solid #a855f7;
+      max-width: 220px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      box-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .speech-bubble.left::after {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-width: 5px 8px 5px 0;
+      border-style: solid;
+      border-color: transparent #a855f7 transparent transparent;
+    }
+
+    .speech-bubble.right::after {
+      content: '';
+      position: absolute;
+      right: -8px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-width: 5px 0 5px 8px;
+      border-style: solid;
+      border-color: transparent transparent transparent #a855f7;
+    }
+
+    /* Fill-in Blanks and Scaffold Guides */
+    .blank-line {
+      display: inline-block;
+      min-width: 140px;
+      border-bottom: 1.5px dashed #475569;
+      margin: 0 4px;
+      text-align: center;
+    }
+
+    .hint-text {
+      color: #94a3b8;
+      font-style: italic;
+      font-weight: normal;
+      font-size: 0.82rem;
+    }
+
+    .hint-box {
+      border: 1px dashed #cbd5e1;
+      background-color: #f8fafc;
+      padding: 8px 12px;
+      border-radius: 6px;
+      min-height: 28px;
+    }
+
+    /* Vocabulary Grid */
+    .word-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .word-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      background-color: #f8fafc;
+      padding: 8px;
+    }
+
+    .word-card h4 {
+      color: #0369a1;
+      border-bottom: 1px solid #bae6fd;
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+    }
+
+    .word-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px 6px;
+      font-size: 0.82rem;
+    }
+
+    .word-list li {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dotted #e2e8f0;
+      padding-bottom: 2px;
+    }
+
+    .en-word {
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    .jp-word {
+      color: #64748b;
+      font-size: 0.78rem;
+    }
+
+    /* Matching Exercises */
+    .matching-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.88rem;
+    }
+
+    /* Recipe Layout */
+    .recipe-box {
+      border: 2px solid #059669;
+      border-radius: 8px;
+      padding: 10px;
+      background-color: #f0fdf4;
+    }
+
+    .recipe-header {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: 1fr 2.2fr;
+      gap: 10px;
+    }
+
+    .ingredient-list-box, .instruction-step-box {
+      background: white;
+      border: 1px solid #a7f3d0;
+      border-radius: 6px;
+      padding: 8px;
+    }
+
+    .fill-line-container {
+      margin-bottom: 6px;
+      border-bottom: 1px dashed #cbd5e1;
+      padding-bottom: 2px;
+      min-height: 24px;
+    }
+
+    /* Page Footer */
+    .page-footer {
+      text-align: center;
+      font-size: 0.78rem;
+      color: #64748b;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 6px;
+      margin-top: auto;
+    }
+
+    .self-check {
+      background-color: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      margin-top: 6px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      gap: 15px;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar for Output/Printing -->
+  <div class="no-print-bar">
+    <h1>📄 Food & Cooking English Worksheet Series (Complete Bilingual Edition)</h1>
+    <button class="btn-print" onclick="window.print()">🖨️ Save as PDF / Print (A4)</button>
+  </div>
+
+  <!-- ================= PAGE 1: GRAMMAR & DIALOGUE ================= -->
+  <div class="page">
+    <div>
+      <div class="sheet-header">
+        <div class="header-top">
+          <div class="sheet-title">Food & Cooking: Part 1</div>
+          <div class="student-info-box">
+            <div class="info-field"><span class="label">Class (組):</span> <span class="line"></span></div>
+            <div class="info-field"><span class="label">No. (番):</span> <span class="line"></span></div>
+            <div class="info-field"><span class="label">Name (名前):</span> <span class="line name"></span></div>
+          </div>
+        </div>
+        <p style="font-size: 0.82rem; color: #475569;">
+          <strong>Target Grammar (文法目標):</strong> Expressing abilities and skills with <strong>can</strong> and <strong>be able to</strong> (能力・「〜ができる」の表現方法).
+        </p>
+      </div>
+
+      <!-- Grammar Section 1: CAN -->
+      <div class="section-box">
+        <div class="section-title">
+          <span class="badge">Grammar 1</span> Expressing Ability with "can" (助動詞 can 「〜できる」)
+        </div>
+        <p style="font-size: 0.82rem; margin-bottom: 4px;">
+          Use <strong>can + [verb base form / 動詞の原形]</strong> to talk about skills or abilities.
+        </p>
+        <table class="grammar-table">
+          <tr>
+            <th>Positive (肯定文)</th>
+            <td><strong>I can cook</strong> curry. <br><span style="color: #64748b; font-size: 0.78rem;">(私はカレーを作ることができます。)</span></td>
+          </tr>
+          <tr>
+            <th>Negative (否定文)</th>
+            <td><strong>I cannot (can't) cook</strong> fish. <br><span style="color: #64748b; font-size: 0.78rem;">(私は魚を調理することができません。)</span></td>
+          </tr>
+          <tr>
+            <th>Question (疑問文)</th>
+            <td><strong>Can you cook</strong> pasta? — Yes, I can. / No, I can't. <br><span style="color: #64748b; font-size: 0.78rem;">(あなたはパスタを作ることができますか？)</span></td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Grammar Section 2: BE ABLE TO -->
+      <div class="section-box">
+        <div class="section-title">
+          <span class="badge">Grammar 2</span> Expressing Ability with "be able to" (be able to の使い方)
+        </div>
+        <p style="font-size: 0.82rem; margin-bottom: 4px;">
+          <strong>be able to + [verb base form]</strong> expresses capability. The <strong>be verb</strong> changes according to the subject (主語).
+        </p>
+        <table class="grammar-table">
+          <tr>
+            <th>Subject (主語)</th>
+            <th>Be Verb (be動詞)</th>
+            <th>Form + Verb</th>
+            <th>Example Sentence (例文)</th>
+          </tr>
+          <tr>
+            <td><strong>I</strong></td>
+            <td><strong>am</strong></td>
+            <td>able to cook</td>
+            <td>I <strong>am able to</strong> make soup. <span style="color: #64748b;">(私はスープを作れます。)</span></td>
+          </tr>
+          <tr>
+            <td><strong>You / We / They</strong></td>
+            <td><strong>are</strong></td>
+            <td>able to cook</td>
+            <td>We <strong>are able to</strong> use the stove. <span style="color: #64748b;">(私たちはコンロが使えます。)</span></td>
+          </tr>
+          <tr>
+            <td><strong>He / She / It</strong></td>
+            <td><strong>is</strong></td>
+            <td>able to cook</td>
+            <td>She <strong>is able to</strong> bake bread. <span style="color: #64748b;">(彼女はパンが焼けます。)</span></td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Dialogue Example Illustration -->
+      <div class="section-box">
+        <div class="section-title">
+          <span class="badge">Dialogue Model</span> Asking & Answering (会話例)
+        </div>
+        <div class="dialogue-container">
+          <!-- Person A -->
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <div class="speech-bubble right">
+              What can you do?<br>
+              <span style="font-size: 0.75rem; color: #64748b; font-weight: normal;">(何を作ることができますか？)</span>
+            </div>
+            <svg width="55" height="55" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.5" style="margin-top: 4px;">
+              <circle cx="12" cy="7" r="4"/>
+              <path d="M5.5 21 a8.38 8.38 0 0 1 13 0"/>
+            </svg>
+            <span style="font-size: 0.78rem; font-weight: bold; color: #1e40af;">Person A (質問者)</span>
+          </div>
+
+          <!-- Person B -->
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <div class="speech-bubble left">
+              I can make <span style="text-decoration: underline;">stir-fry</span>!<br>
+              <span style="font-size: 0.75rem; color: #64748b; font-weight: normal;">(野菜炒めを作ることができます！)</span>
+            </div>
+            <svg width="55" height="55" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="1.5" style="margin-top: 4px;">
+              <circle cx="12" cy="7" r="4"/>
+              <path d="M5.5 21 a8.38 8.38 0 0 1 13 0"/>
+            </svg>
+            <span style="font-size: 0.78rem; font-weight: bold; color: #7e22ce;">Person B (回答者)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Practice Questions Page 1 -->
+      <div class="section-box">
+        <div class="section-title">
+          <span class="badge">Practice 1</span> Fill in the blanks (かっこ内を埋めて英文を完成させよう)
+        </div>
+        <div style="font-size: 0.85rem; display: flex; flex-direction: column; gap: 8px;">
+          <div>
+            1. 私はチャーハンを作ることができます。<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;I <span class="blank-line"><span class="hint-text">(can / cook)</span></span> fried rice.
+          </div>
+          <div>
+            2. 彼女は野菜を丁寧に切ることができます。<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;She <span class="blank-line"><span class="hint-text">(be動詞 + able to)</span></span> cut vegetables carefully.
+          </div>
+          <div>
+            3. あなたは何を作ることができますか？ — ゆで卵を作ることができます。<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;What <span class="blank-line" style="min-width: 80px;"><span class="hint-text">(can / do)</span></span> you do? — I can <span class="blank-line"><span class="hint-text">(boil / cook)</span></span> eggs.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      Page 1 - Food and Cooking English Series (Bilingual Version)
+    </div>
+  </div>
+
+  <!-- ================= PAGE 2: WORD BANK & VOCABULARY ================= -->
+  <div class="page">
+    <div>
+      <div class="sheet-header">
+        <div class="header-top">
+          <div class="sheet-title">Food & Cooking: Part 2</div>
+          <div style="font-weight: bold; color: #2563eb;">Vocabulary & Word Bank (単語集)</div>
+        </div>
+        <p style="font-size: 0.82rem; color: #475569;">
+          Study the nouns (ingredients) and verbs (cooking methods) from textbook page 44.<br>
+          教科書44ページに登場する食材（名詞）と調理法（動詞）の単語リストです。
+        </p>
+      </div>
+
+      <!-- Word Bank Grid -->
+      <div class="section-box">
+        <div class="section-title"><span class="badge">Word Bank</span> Ingredients & Cooking Actions (食材・調理単語)</div>
+        <div class="word-grid">
+          
+          <!-- Category 1 -->
+          <div class="word-card">
+            <h4>🍞 Food Groups (基本の食品)</h4>
+            <ul class="word-list">
+              <li><span class="en-word">eggs & milk</span> <span class="jp-word">卵と牛乳</span></li>
+              <li><span class="en-word">vegetables</span> <span class="jp-word">野菜類</span></li>
+              <li><span class="en-word">meat</span> <span class="jp-word">肉類</span></li>
+              <li><span class="en-word">rice</span> <span class="jp-word">米・ご飯</span></li>
+              <li><span class="en-word">bread</span> <span class="jp-word">パン</span></li>
+              <li><span class="en-word">pasta</span> <span class="jp-word">パスタ</span></li>
+            </ul>
+          </div>
+
+          <!-- Category 2 -->
+          <div class="word-card">
+            <h4>🥕 Specific Ingredients (詳しい食材)</h4>
+            <ul class="word-list">
+              <li><span class="en-word">pork</span> <span class="jp-word">豚肉</span></li>
+              <li><span class="en-word">beef</span> <span class="jp-word">牛肉</span></li>
+              <li><span class="en-word">cabbage</span> <span class="jp-word">キャベツ</span></li>
+              <li><span class="en-word">onion</span> <span class="jp-word">タマネギ</span></li>
+              <li><span class="en-word">carrot</span> <span class="jp-word">ニンジン</span></li>
+              <li><span class="en-word">potato</span> <span class="jp-word">ジャガイモ</span></li>
+            </ul>
+          </div>
+
+          <!-- Category 3 -->
+          <div class="word-card">
+            <h4>🧂 Seasonings & Liquids (調味料・その他)</h4>
+            <ul class="word-list">
+              <li><span class="en-word">oil</span> <span class="jp-word">油</span></li>
+              <li><span class="en-word">salt</span> <span class="jp-word">塩</span></li>
+              <li><span class="en-word">pepper</span> <span class="jp-word">コショウ</span></li>
+              <li><span class="en-word">soy sauce</span> <span class="jp-word">醤油</span></li>
+              <li><span class="en-word">roux</span> <span class="jp-word">ルー</span></li>
+              <li><span class="en-word">water</span> <span class="jp-word">水</span></li>
+            </ul>
+          </div>
+
+          <!-- Category 4 -->
+          <div class="word-card">
+            <h4>🍳 Cooking Actions (調理方法の動詞)</h4>
+            <ul class="word-list">
+              <li><span class="en-word">grill</span> <span class="jp-word">焼く (網焼き)</span></li>
+              <li><span class="en-word">bake</span> <span class="jp-word">焼く (オーブン)</span></li>
+              <li><span class="en-word">stir-fry</span> <span class="jp-word">炒める</span></li>
+              <li><span class="en-word">boil</span> <span class="jp-word">ゆでる・煮沸する</span></li>
+              <li><span class="en-word">deep-fry</span> <span class="jp-word">揚げ物をする</span></li>
+              <li><span class="en-word">stew</span> <span class="jp-word">煮込む</span></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Vocabulary Exercise 1: Matching -->
+      <div class="section-box">
+        <div class="section-title"><span class="badge">Task 1</span> Match English cooking verbs to Japanese (線で結ぼう)</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 6px 15px;">
+          <div class="matching-list">
+            <div>1. stir-fry  &nbsp;&nbsp;●</div>
+            <div>2. boil  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●</div>
+            <div>3. deep-fry ●</div>
+            <div>4. stew &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;●</div>
+          </div>
+          <div class="matching-list">
+            <div>● &nbsp;&nbsp;A. 煮込む</div>
+            <div>● &nbsp;&nbsp;B. 炒める</div>
+            <div>● &nbsp;&nbsp;C. 揚げる</div>
+            <div>● &nbsp;&nbsp;D. ゆでる</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vocabulary Exercise 2: Word Categorization with Guide Blanks -->
+      <div class="section-box">
+        <div class="section-title"><span class="badge">Task 2</span> Group the Words into categories (仲間分けをしよう)</div>
+        <p style="font-size: 0.8rem; margin-bottom: 6px; color: #334155;">
+          Classify these words: <strong>[ carrot, boil, salt, pork, stir-fry, soy sauce ]</strong>
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center;">
+          <div style="border: 1px solid #cbd5e1; padding: 6px; border-radius: 6px; background: #f8fafc;">
+            <strong style="color: #0284c7; font-size: 0.85rem;">Action (動詞)</strong>
+            <div class="hint-box" style="margin-top: 4px;"><span class="hint-text">(e.g., boil, ...)</span></div>
+          </div>
+          <div style="border: 1px solid #cbd5e1; padding: 6px; border-radius: 6px; background: #f8fafc;">
+            <strong style="color: #0284c7; font-size: 0.85rem;">Ingredient (食材)</strong>
+            <div class="hint-box" style="margin-top: 4px;"><span class="hint-text">(e.g., carrot, ...)</span></div>
+          </div>
+          <div style="border: 1px solid #cbd5e1; padding: 6px; border-radius: 6px; background: #f8fafc;">
+            <strong style="color: #0284c7; font-size: 0.85rem;">Seasoning (調味料)</strong>
+            <div class="hint-box" style="margin-top: 4px;"><span class="hint-text">(e.g., salt, ...)</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="page-footer">
+      Page 2 - Food and Cooking English Series (Bilingual Version)
+    </div>
+  </div>
+
+  <!-- ================= PAGE 3: ACTIVE TASKS & RECIPE ================= -->
+  <div class="page">
+    <div>
+      <div class="sheet-header">
+        <div class="header-top">
+          <div class="sheet-title">Food & Cooking: Part 3</div>
+          <div style="font-weight: bold; color: #059669;">Active Learning Tasks (実践アクティビティ)</div>
+        </div>
+        <p style="font-size: 0.82rem; color: #475569;">
+          Complete the active learning steps based on page 44 of your textbook.<br>
+          教科書44ページの「SHARE (話し合う)」と「WRITE (レシピを書く)」に挑戦しましょう。
+        </p>
+      </div>
+
+      <!-- Activity Step 1: Choose Ingredients -->
+      <div class="section-box">
+        <div class="section-title"><span class="badge">Step 1</span> Choose Ingredients & Dish (食材と料理を選ぼう)</div>
+        <p style="font-size: 0.8rem; margin-bottom: 6px; color: #334155;">
+          Choose 2 or more ingredients from your Word Bank and decide what dish you can make.<br>
+          2つ以上の食材を選び、作る料理をメモしましょう。
+        </p>
+        <div style="display: flex; gap: 12px; font-size: 0.85rem;">
+          <div style="flex: 1.2;">
+            <strong>Ingredients to use (使う食材):</strong>
+            <div class="hint-box" style="margin-top: 4px;"><span class="hint-text">e.g., beef, onions, carrots, potato</span></div>
+          </div>
+          <div style="flex: 1;">
+            <strong>Dish Name (料理名):</strong>
+            <div class="hint-box" style="margin-top: 4px;"><span class="hint-text">e.g., Curry / Stew</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity Step 2: Pair Practice Dialogue -->
+      <div class="section-box">
+        <div class="section-title"><span class="badge">Step 2</span> Pair Dialogue Practice (ペアで話し合おう)</div>
+        <p style="font-size: 0.8rem; margin-bottom: 6px; color: #334155;">
+          Fill in the blanks with light hints, then practice speaking with your partner! (ペアで交互に会話練習をしよう)
+        </p>
+        <div style="background-color: #f8fafc; padding: 8px 12px; border-radius: 6px; border: 1px solid #e2e8f0; font-size: 0.85rem;">
+          <p style="margin-bottom: 4px;">
+            <strong>A:</strong> We can make <span class="blank-line" style="min-width: 100px;"><span class="hint-text">(dish name / 料理)</span></span>.
+            We can use <span class="blank-line" style="min-width: 140px;"><span class="hint-text">(ingredients / 食材)</span></span>.
+          </p>
+          <p style="margin-bottom: 4px; color: #0369a1;">
+            <strong>B:</strong> That's a good idea! How do we make it? <span style="font-size: 0.75rem; color: #64748b;">(いいね！どうやって作るの？)</span>
+          </p>
+          <p>
+            <strong>A:</strong> We <span class="blank-line" style="min-width: 90px;"><span class="hint-text">(action 1 / 調理法)</span></span> the ingredients, and then we <span class="blank-line" style="min-width: 90px;"><span class="hint-text">(action 2 / 調理法)</span></span> them!
+          </p>
+        </div>
+      </div>
+
+      <!-- Activity Step 3: Write Your Recipe -->
+      <div class="section-box">
+        <div class="section-title"><span class="badge">Step 3</span> Write Your Recipe (料理のレシピを書こう)</div>
+        <p style="font-size: 0.8rem; margin-bottom: 6px; color: #334155;">
+          Refer to the sample recipe for <i>Yasai itame (Vegetable Stir-fry)</i> and write your own recipe!
+        </p>
+        
+        <div class="recipe-box">
+          <div class="recipe-header">
+            <span style="font-weight: bold; color: #047857; min-width: 120px; font-size: 0.85rem;">Dish Name (料理名):</span>
+            <div class="hint-box" style="flex: 1; background: white;"><span class="hint-text">e.g., Vegetable Stir-fry / Curry</span></div>
+          </div>
+          
+          <div class="recipe-grid">
+            <!-- Ingredients Column -->
+            <div class="ingredient-list-box">
+              <strong style="color: #047857; font-size: 0.82rem;">Ingredients (材料):</strong>
+              <div style="margin-top: 4px;">
+                <div class="fill-line-container"><span class="hint-text">• pork</span></div>
+                <div class="fill-line-container"><span class="hint-text">• cabbage</span></div>
+                <div class="fill-line-container"><span class="hint-text">• </span></div>
+                <div class="fill-line-container"><span class="hint-text">• </span></div>
+                <div class="fill-line-container"><span class="hint-text">• </span></div>
+              </div>
+            </div>
+
+            <!-- Recipe Steps Column -->
+            <div class="instruction-step-box">
+              <strong style="color: #047857; font-size: 0.82rem;">Recipe Steps (作り方手順):</strong>
+              <div style="font-size: 0.82rem; margin-top: 4px; display: flex; flex-direction: column; gap: 8px;">
+                <div>
+                  1. <span class="blank-line" style="min-width: 220px;"><span class="hint-text">(Action & ingredients / 例: Cut vegetables)</span></span>
+                </div>
+                <div>
+                  2. <span class="blank-line" style="min-width: 220px;"><span class="hint-text">(Action & ingredients / 例: Cook meat / Heat oil)</span></span>
+                </div>
+                <div>
+                  3. <span class="blank-line" style="min-width: 220px;"><span class="hint-text">(Action & ingredients / 例: Boil water / Add ingredients)</span></span>
+                </div>
+                <div>
+                  4. <span class="blank-line" style="min-width: 220px;"><span class="hint-text">(Seasonings / 例: Add salt and pepper / roux)</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Self Check Box -->
+      <div class="self-check">
+        <strong>Self-Check (振り返り):</strong>
+        <div class="checkbox-group">
+          <label><input type="checkbox"> 食材や料理について英語で表現できた (Talked about ingredients)</label>
+          <label><input type="checkbox"> 料理の作り方やレシピを書くことができた (Wrote a simple recipe)</label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="page-footer">
+      Page 3 - Food and Cooking English Series (Bilingual Version)
+    </div>
+  </div>
+
+</body>
+</html>
+
